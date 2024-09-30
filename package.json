@@ -11,11 +11,17 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "electron": "^25.0.0",
+    "electron-builder": "^23.0.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "electron-build": "react-scripts build && electron-builder"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +40,23 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "build": {
+    "appId": "com.mytodoapp.desktop",
+    "files": [
+      "build/**/*",
+      "public/electron.js"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.png"
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "category": "Utility"
+    }
   }
 }
